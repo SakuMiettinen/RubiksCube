@@ -19,23 +19,19 @@ document.onkeydown = e => {
     }
     if (e.key === "ArrowUp") {
         object.rotateOnWorldAxis(xAxis, -Math.PI / 16)
-        console.log("up arrow pressed")
     } else if (e.key === "ArrowDown") {
         object.rotateOnWorldAxis(xAxis, Math.PI / 16)
-        console.log("down arrow pressed")
     } else if (e.key === "ArrowLeft") {
         if (zPressed) {
             object.rotateOnWorldAxis(zAxis, Math.PI / 16)
         } else {
             object.rotateOnWorldAxis(yAxis, -Math.PI / 16)
-            console.log("left arrow pressed")
         }
     } else if (e.key === "ArrowRight") {
         if (zPressed) {
             object.rotateOnWorldAxis(zAxis, -Math.PI / 16)
         } else {
             object.rotateOnWorldAxis(yAxis, Math.PI / 16)
-            console.log("right arrow pressed")
         }
     }
 }
@@ -63,18 +59,33 @@ renderer.render(scene, camera)
 const geometry = new THREE.BoxGeometry(10, 10, 10).toNonIndexed()
 
 const material = new THREE.MeshBasicMaterial({ vertexColors: true })
-const positionAttribute = geometry.getAttribute("position")
+
 const colors = []
 
-for (let i = 0; i < positionAttribute.count; i += 6) {
-    colors.push(0.5, 0.5, 0.5)
-    colors.push(0.5, 0.5, 0.5)
-    colors.push(0.5, 0.5, 0.5)
-
-    colors.push(0.5, 0.5, 0.5)
-    colors.push(0.5, 0.5, 0.5)
-    colors.push(0.5, 0.5, 0.5)
-} // for
+for (let j = 0; j < 6; j++) {
+    colors.push(0, 1, 0)
+    console.log(colors)
+}
+for (let j = 0; j < 6; j++) {
+    colors.push(1, 0, 0)
+    console.log(colors)
+}
+for (let j = 0; j < 6; j++) {
+    colors.push(0, 0, 1)
+    console.log(colors)
+}
+for (let j = 0; j < 6; j++) {
+    colors.push(1, 0.5, 0.5)
+    console.log(colors)
+}
+for (let j = 0; j < 6; j++) {
+    colors.push(0.5, 1, 0.5)
+    console.log(colors)
+}
+for (let j = 0; j < 6; j++) {
+    colors.push(0.5, 0.5, 1)
+    console.log(colors)
+}
 
 // define the new attribute
 geometry.setAttribute("color", new THREE.Float32BufferAttribute(colors, 3))
