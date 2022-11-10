@@ -62,28 +62,34 @@ const material = new THREE.MeshBasicMaterial({ vertexColors: true })
 
 const colors = []
 
-for (let j = 0; j < 6; j++) {
-    colors.push(0, 1, 0)
-    console.log(colors)
-}
-for (let j = 0; j < 6; j++) {
-    colors.push(1, 0, 0)
-    console.log(colors)
-}
+// blue
 for (let j = 0; j < 6; j++) {
     colors.push(0, 0, 1)
     console.log(colors)
 }
+// green
 for (let j = 0; j < 6; j++) {
-    colors.push(1, 0.5, 0.5)
+    colors.push(0, 1, 0)
     console.log(colors)
 }
+// white
 for (let j = 0; j < 6; j++) {
-    colors.push(0.5, 1, 0.5)
+    colors.push(1, 1, 1)
     console.log(colors)
 }
+// yellow
 for (let j = 0; j < 6; j++) {
-    colors.push(0.5, 0.5, 1)
+    colors.push(1, 1, 0)
+    console.log(colors)
+}
+// red
+for (let j = 0; j < 6; j++) {
+    colors.push(1, 0, 0)
+    console.log(colors)
+}
+// orange
+for (let j = 0; j < 6; j++) {
+    colors.push(1, 0.3725490196, 0)
     console.log(colors)
 }
 
