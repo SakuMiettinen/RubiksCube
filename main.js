@@ -8,6 +8,9 @@ const HEIGHT = window.innerHeight
 
 let zPressed = false
 
+const leftGroup = new THREE.Group()
+const topGroup = new THREE.Group()
+
 document.onkeyup = e => {
     e = e || window.event
     if (e.key === "z") zPressed = false
@@ -17,6 +20,33 @@ document.onkeydown = e => {
     e = e || window.event
     if (e.key === "z") {
         zPressed = true
+    }
+    if (e.key === "1") {
+        for (let i = 0; i < allCubes.length; i++) {
+            if (
+                Math.round(
+                    allCubes[i].getWorldPosition(new THREE.Vector3()).x
+                ) === -2
+            ) {
+                leftGroup.add(allCubes[i])
+            }
+            scene.add(leftGroup)
+        }
+        leftGroup.rotateOnWorldAxis(xAxis, Math.PI / 4)
+        console.log(allCubes[0].getWorldPosition(new THREE.Vector3()))
+    } else if (e.key === "4") {
+        for (let i = 0; i < allCubes.length; i++) {
+            if (
+                Math.round(
+                    allCubes[i].getWorldPosition(new THREE.Vector3()).y
+                ) === 2
+            ) {
+                topGroup.add(allCubes[i])
+            }
+            scene.add(topGroup)
+        }
+        topGroup.rotateOnWorldAxis(yAxis, Math.PI / 4)
+        console.log(allCubes[0].getWorldPosition(new THREE.Vector3()))
     }
     if (e.key === "ArrowUp") {
         // object.rotateOnWorldAxis(xAxis, -Math.PI / 16)
@@ -157,85 +187,85 @@ allCubes.push(YO)
 const YBO = new THREE.Mesh(geometry, material)
 allCubes.push(YBO)
 
-WGR.translateOnAxis(xAxis, -1.1)
-WGR.translateOnAxis(yAxis, 1.1)
-WGR.translateOnAxis(zAxis, 1.1)
+WGR.translateOnAxis(xAxis, -2)
+WGR.translateOnAxis(yAxis, 2)
+WGR.translateOnAxis(zAxis, 2)
 
-WR.translateOnAxis(yAxis, 1.1)
-WR.translateOnAxis(zAxis, 1.1)
+WR.translateOnAxis(yAxis, 2)
+WR.translateOnAxis(zAxis, 2)
 
-WRB.translateOnAxis(xAxis, 1.1)
-WRB.translateOnAxis(yAxis, 1.1)
-WRB.translateOnAxis(zAxis, 1.1)
+WRB.translateOnAxis(xAxis, 2)
+WRB.translateOnAxis(yAxis, 2)
+WRB.translateOnAxis(zAxis, 2)
 
-WG.translateOnAxis(yAxis, 1.1)
-WG.translateOnAxis(xAxis, -1.1)
+WG.translateOnAxis(yAxis, 2)
+WG.translateOnAxis(xAxis, -2)
 
-W.translateOnAxis(yAxis, 1.1)
+W.translateOnAxis(yAxis, 2)
 
-WB.translateOnAxis(yAxis, 1.1)
-WB.translateOnAxis(xAxis, 1.1)
+WB.translateOnAxis(yAxis, 2)
+WB.translateOnAxis(xAxis, 2)
 
-WOG.translateOnAxis(yAxis, 1.1)
-WOG.translateOnAxis(xAxis, -1.1)
-WOG.translateOnAxis(zAxis, -1.1)
+WOG.translateOnAxis(yAxis, 2)
+WOG.translateOnAxis(xAxis, -2)
+WOG.translateOnAxis(zAxis, -2)
 
-WO.translateOnAxis(yAxis, 1.1)
-WO.translateOnAxis(zAxis, -1.1)
+WO.translateOnAxis(yAxis, 2)
+WO.translateOnAxis(zAxis, -2)
 
-WBO.translateOnAxis(yAxis, 1.1)
-WBO.translateOnAxis(xAxis, 1.1)
-WBO.translateOnAxis(zAxis, -1.1)
+WBO.translateOnAxis(yAxis, 2)
+WBO.translateOnAxis(xAxis, 2)
+WBO.translateOnAxis(zAxis, -2)
 
-GR.translateOnAxis(xAxis, -1.1)
-GR.translateOnAxis(zAxis, 1.1)
+GR.translateOnAxis(xAxis, -2)
+GR.translateOnAxis(zAxis, 2)
 
-R.translateOnAxis(zAxis, 1.1)
+R.translateOnAxis(zAxis, 2)
 
-RB.translateOnAxis(xAxis, 1.1)
-RB.translateOnAxis(zAxis, 1.1)
+RB.translateOnAxis(xAxis, 2)
+RB.translateOnAxis(zAxis, 2)
 
-G.translateOnAxis(xAxis, -1.1)
+G.translateOnAxis(xAxis, -2)
 
-B.translateOnAxis(xAxis, 1.1)
+B.translateOnAxis(xAxis, 2)
 
-OG.translateOnAxis(xAxis, -1.1)
-OG.translateOnAxis(zAxis, -1.1)
+OG.translateOnAxis(xAxis, -2)
+OG.translateOnAxis(zAxis, -2)
 
-O.translateOnAxis(zAxis, -1.1)
+O.translateOnAxis(zAxis, -2)
 
-OB.translateOnAxis(xAxis, 1.1)
-OB.translateOnAxis(zAxis, -1.1)
+OB.translateOnAxis(xAxis, 2)
+OB.translateOnAxis(zAxis, -2)
 
-YGR.translateOnAxis(xAxis, -1.1)
-YGR.translateOnAxis(yAxis, -1.1)
-YGR.translateOnAxis(zAxis, 1.1)
+YGR.translateOnAxis(xAxis, -2)
+YGR.translateOnAxis(yAxis, -2)
+YGR.translateOnAxis(zAxis, 2)
 
-YR.translateOnAxis(yAxis, -1.1)
-YR.translateOnAxis(zAxis, 1.1)
+YR.translateOnAxis(yAxis, -2)
+YR.translateOnAxis(zAxis, 2)
 
-YRB.translateOnAxis(xAxis, 1.1)
-YRB.translateOnAxis(yAxis, -1.1)
-YRB.translateOnAxis(zAxis, 1.1)
+YRB.translateOnAxis(xAxis, 2)
+YRB.translateOnAxis(yAxis, -2)
+YRB.translateOnAxis(zAxis, 2)
 
-YG.translateOnAxis(xAxis, -1.1)
-YG.translateOnAxis(yAxis, -1.1)
+YG.translateOnAxis(xAxis, -2)
+YG.translateOnAxis(yAxis, -2)
 
-Y.translateOnAxis(yAxis, -1.1)
+Y.translateOnAxis(yAxis, -2)
 
-YB.translateOnAxis(xAxis, 1.1)
-YB.translateOnAxis(yAxis, -1.1)
+YB.translateOnAxis(xAxis, 2)
+YB.translateOnAxis(yAxis, -2)
 
-YOG.translateOnAxis(xAxis, -1.1)
-YOG.translateOnAxis(yAxis, -1.1)
-YOG.translateOnAxis(zAxis, -1.1)
+YOG.translateOnAxis(xAxis, -2)
+YOG.translateOnAxis(yAxis, -2)
+YOG.translateOnAxis(zAxis, -2)
 
-YO.translateOnAxis(yAxis, -1.1)
-YO.translateOnAxis(zAxis, -1.1)
+YO.translateOnAxis(yAxis, -2)
+YO.translateOnAxis(zAxis, -2)
 
-YBO.translateOnAxis(xAxis, 1.1)
-YBO.translateOnAxis(yAxis, -1.1)
-YBO.translateOnAxis(zAxis, -1.1)
+YBO.translateOnAxis(xAxis, 2)
+YBO.translateOnAxis(yAxis, -2)
+YBO.translateOnAxis(zAxis, -2)
 
 const toMove = new THREE.Group()
 toMove.add(
@@ -338,8 +368,8 @@ function addMouseHandler(canvas) {
 }
 
 function rotateScene(deltaX, deltaY) {
-    group.rotateOnWorldAxis(xAxis, deltaY / 100)
-    group.rotateOnWorldAxis(yAxis, deltaX / 100)
+    toMove.rotateOnWorldAxis(xAxis, deltaY / 100)
+    toMove.rotateOnWorldAxis(yAxis, deltaX / 100)
 }
 
 addMouseHandler(canvas)
