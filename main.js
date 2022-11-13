@@ -1,7 +1,35 @@
 import "./style.css"
 
 import * as THREE from "three"
-import { RoundedBoxGeometry } from "three/examples/jsm/geometries/RoundedBoxGeometry"
+import animateGroup from "./rotations"
+import {
+    WGRGeom,
+    WRBGeom,
+    WRGeom,
+    GRGeom,
+    RGeom,
+    RBGeom,
+    YGRGeom,
+    YRGeom,
+    YRBGeom,
+    WGGeom,
+    WGeom,
+    WBGeom,
+    WOGGeom,
+    WOGeom,
+    WBOGeom,
+    OGGeom,
+    OGeom,
+    OBGeom,
+    YOGGeom,
+    YOGeom,
+    YBOGeom,
+    YGGeom,
+    YGeom,
+    YBGeom,
+    GGeom,
+    BGeom,
+} from "./customCubes"
 
 const WIDTH = window.innerWidth
 const HEIGHT = window.innerHeight
@@ -9,7 +37,14 @@ const HEIGHT = window.innerHeight
 let zPressed = false
 
 const leftGroup = new THREE.Group()
+const vMiddleGroup = new THREE.Group()
+const rightGroup = new THREE.Group()
 const topGroup = new THREE.Group()
+const hMiddleGroup = new THREE.Group()
+const bottomGroup = new THREE.Group()
+const frontGroup = new THREE.Group()
+const zMiddleGroup = new THREE.Group()
+const backGroup = new THREE.Group()
 
 document.onkeyup = e => {
     e = e || window.event
@@ -26,27 +61,118 @@ document.onkeydown = e => {
             if (
                 Math.round(
                     allCubes[i].getWorldPosition(new THREE.Vector3()).x
-                ) === -2
+                ) === -1
             ) {
-                leftGroup.add(allCubes[i])
+                leftGroup.attach(allCubes[i])
             }
             scene.add(leftGroup)
         }
-        leftGroup.rotateOnWorldAxis(xAxis, Math.PI / 4)
-        console.log(allCubes[0].getWorldPosition(new THREE.Vector3()))
+        // leftGroup.rotateOnWorldAxis(xAxis, Math.PI / 4)
+        animateGroup(leftGroup, 0, xAxis)
+    } else if (e.key === "2") {
+        for (let i = 0; i < allCubes.length; i++) {
+            if (
+                Math.round(
+                    allCubes[i].getWorldPosition(new THREE.Vector3()).x
+                ) === 0
+            ) {
+                vMiddleGroup.attach(allCubes[i])
+            }
+            scene.add(vMiddleGroup)
+        }
+        // vMiddleGroup.rotateOnWorldAxis(xAxis, Math.PI / 4)
+        animateGroup(vMiddleGroup, 0, xAxis)
+    } else if (e.key === "3") {
+        for (let i = 0; i < allCubes.length; i++) {
+            if (
+                Math.round(
+                    allCubes[i].getWorldPosition(new THREE.Vector3()).x
+                ) === 1
+            ) {
+                rightGroup.attach(allCubes[i])
+            }
+            scene.add(rightGroup)
+        }
+        // rightGroup.rotateOnWorldAxis(xAxis, Math.PI / 4)
+        animateGroup(rightGroup, 0, xAxis)
     } else if (e.key === "4") {
         for (let i = 0; i < allCubes.length; i++) {
             if (
                 Math.round(
                     allCubes[i].getWorldPosition(new THREE.Vector3()).y
-                ) === 2
+                ) === 1
             ) {
-                topGroup.add(allCubes[i])
+                topGroup.attach(allCubes[i])
             }
             scene.add(topGroup)
         }
-        topGroup.rotateOnWorldAxis(yAxis, Math.PI / 4)
-        console.log(allCubes[0].getWorldPosition(new THREE.Vector3()))
+        // topGroup.rotateOnWorldAxis(yAxis, Math.PI / 4)
+        animateGroup(topGroup, 0, yAxis)
+    } else if (e.key === "5") {
+        for (let i = 0; i < allCubes.length; i++) {
+            if (
+                Math.round(
+                    allCubes[i].getWorldPosition(new THREE.Vector3()).y
+                ) === 0
+            ) {
+                hMiddleGroup.attach(allCubes[i])
+            }
+            scene.add(hMiddleGroup)
+        }
+        // hMiddleGroup.rotateOnWorldAxis(yAxis, Math.PI / 4)
+        animateGroup(hMiddleGroup, 0, yAxis)
+    } else if (e.key === "6") {
+        for (let i = 0; i < allCubes.length; i++) {
+            if (
+                Math.round(
+                    allCubes[i].getWorldPosition(new THREE.Vector3()).y
+                ) === -1
+            ) {
+                bottomGroup.attach(allCubes[i])
+            }
+            scene.add(bottomGroup)
+        }
+        // bottomGroup.rotateOnWorldAxis(yAxis, Math.PI / 4)
+        animateGroup(bottomGroup, 0, yAxis)
+    } else if (e.key === "7") {
+        for (let i = 0; i < allCubes.length; i++) {
+            if (
+                Math.round(
+                    allCubes[i].getWorldPosition(new THREE.Vector3()).z
+                ) === 1
+            ) {
+                frontGroup.attach(allCubes[i])
+            }
+            scene.add(frontGroup)
+        }
+        // frontGroup.rotateOnWorldAxis(zAxis, Math.PI / 4)
+        animateGroup(frontGroup, 0, zAxis)
+    } else if (e.key === "8") {
+        for (let i = 0; i < allCubes.length; i++) {
+            if (
+                Math.round(
+                    allCubes[i].getWorldPosition(new THREE.Vector3()).z
+                ) === 0
+            ) {
+                zMiddleGroup.attach(allCubes[i])
+            }
+            scene.add(zMiddleGroup)
+        }
+        // zMiddleGroup.rotateOnWorldAxis(zAxis, Math.PI / 4)
+        animateGroup(zMiddleGroup, 0, zAxis)
+    } else if (e.key === "9") {
+        for (let i = 0; i < allCubes.length; i++) {
+            if (
+                Math.round(
+                    allCubes[i].getWorldPosition(new THREE.Vector3()).z
+                ) === -1
+            ) {
+                backGroup.attach(allCubes[i])
+            }
+            scene.add(backGroup)
+        }
+        // backGroup.rotateOnWorldAxis(zAxis, Math.PI / 4)
+        animateGroup(backGroup, 0, zAxis)
     }
     if (e.key === "ArrowUp") {
         // object.rotateOnWorldAxis(xAxis, -Math.PI / 16)
@@ -78,6 +204,7 @@ const zAxis = new THREE.Vector3(0, 0, 1)
 const canvas = document.getElementById("bg")
 
 const scene = new THREE.Scene()
+console.log(scene)
 
 const camera = new THREE.PerspectiveCamera(75, WIDTH / HEIGHT, 0.1, 1000)
 
@@ -91,181 +218,176 @@ renderer.setSize(WIDTH, HEIGHT)
 camera.position.setZ(10)
 renderer.render(scene, camera)
 
-const geometry = new RoundedBoxGeometry(1, 1, 1)
-const material = new THREE.MeshBasicMaterial({ color: 0x26c7af })
-
-// const colors = []
-
-// // blue
-// for (let j = 0; j < 6; j++) {
-//     colors.push(0, 0, 1)
-// }
-// // green
-// for (let j = 0; j < 6; j++) {
-//     colors.push(0, 1, 0)
-// }
-// // white
-// for (let j = 0; j < 6; j++) {
-//     colors.push(1, 1, 1)
-// }
-// // yellow
-// for (let j = 0; j < 6; j++) {
-//     colors.push(1, 1, 0)
-// }
-// // red
-// for (let j = 0; j < 6; j++) {
-//     colors.push(1, 0, 0)
-// }
-// // orange
-// for (let j = 0; j < 6; j++) {
-//     colors.push(1, 0.3725490196, 0)
-// }
-
-// // define the new attribute
-// geometry.setAttribute("color", new THREE.Float32BufferAttribute(colors, 3))
+const material = new THREE.MeshLambertMaterial({ vertexColors: true })
 
 let allCubes = []
 
-const WGR = new THREE.Mesh(geometry, material)
+const WGR = new THREE.Mesh(WGRGeom, material)
+WGR.name = "WGR"
 allCubes.push(WGR)
-const WR = new THREE.Mesh(geometry, material)
+const WR = new THREE.Mesh(WRGeom, material)
+WR.name = "WR"
 allCubes.push(WR)
-const WRB = new THREE.Mesh(geometry, material)
+const WRB = new THREE.Mesh(WRBGeom, material)
+WRB.name = "WRB"
 allCubes.push(WRB)
 
-const WG = new THREE.Mesh(geometry, material)
+const WG = new THREE.Mesh(WGGeom, material)
+WG.name = "WG"
 allCubes.push(WG)
-const W = new THREE.Mesh(geometry, material)
+const W = new THREE.Mesh(WGeom, material)
+W.name = "W"
 allCubes.push(W)
-const WB = new THREE.Mesh(geometry, material)
+const WB = new THREE.Mesh(WBGeom, material)
+WB.name = "WB"
 allCubes.push(WB)
 
-const WOG = new THREE.Mesh(geometry, material)
+const WOG = new THREE.Mesh(WOGGeom, material)
+WOG.name = "WOG"
 allCubes.push(WOG)
-const WO = new THREE.Mesh(geometry, material)
+const WO = new THREE.Mesh(WOGeom, material)
+WO.name = "WO"
 allCubes.push(WO)
-const WBO = new THREE.Mesh(geometry, material)
+const WBO = new THREE.Mesh(WBOGeom, material)
+WBO.name = "WBO"
 allCubes.push(WBO)
 
-const GR = new THREE.Mesh(geometry, material)
+const GR = new THREE.Mesh(GRGeom, material)
+GR.name = "GR"
 allCubes.push(GR)
-const R = new THREE.Mesh(geometry, material)
+const R = new THREE.Mesh(RGeom, material)
+R.name = "R"
 allCubes.push(R)
-const RB = new THREE.Mesh(geometry, material)
+const RB = new THREE.Mesh(RBGeom, material)
+RB.name = "RB"
 allCubes.push(RB)
 
-const G = new THREE.Mesh(geometry, material)
+const G = new THREE.Mesh(GGeom, material)
+G.name = "G"
 allCubes.push(G)
-const B = new THREE.Mesh(geometry, material)
+const B = new THREE.Mesh(BGeom, material)
+B.name = "B"
 allCubes.push(B)
 
-const OG = new THREE.Mesh(geometry, material)
+const OG = new THREE.Mesh(OGGeom, material)
+OG.name = "OG"
 allCubes.push(OG)
-const O = new THREE.Mesh(geometry, material)
+const O = new THREE.Mesh(OGeom, material)
+O.name = "O"
 allCubes.push(O)
-const OB = new THREE.Mesh(geometry, material)
+const OB = new THREE.Mesh(OBGeom, material)
+OB.name = "OB"
 allCubes.push(OB)
 
-const YGR = new THREE.Mesh(geometry, material)
+const YGR = new THREE.Mesh(YGRGeom, material)
+YGR.name = "YGR"
 allCubes.push(YGR)
-const YR = new THREE.Mesh(geometry, material)
+const YR = new THREE.Mesh(YRGeom, material)
+YR.name = "YR"
 allCubes.push(YR)
-const YRB = new THREE.Mesh(geometry, material)
+const YRB = new THREE.Mesh(YRBGeom, material)
+YRB.name = "YRB"
 allCubes.push(YRB)
 
-const YG = new THREE.Mesh(geometry, material)
+const YG = new THREE.Mesh(YGGeom, material)
+YG.name = "YG"
 allCubes.push(YG)
-const Y = new THREE.Mesh(geometry, material)
+const Y = new THREE.Mesh(YGeom, material)
+Y.name = "Y"
 allCubes.push(Y)
-const YB = new THREE.Mesh(geometry, material)
+const YB = new THREE.Mesh(YBGeom, material)
+YB.name = "YB"
 allCubes.push(YB)
 
-const YOG = new THREE.Mesh(geometry, material)
+const YOG = new THREE.Mesh(YOGGeom, material)
+YOG.name = "YOG"
 allCubes.push(YOG)
-const YO = new THREE.Mesh(geometry, material)
+const YO = new THREE.Mesh(YOGeom, material)
+YO.name = "YO"
 allCubes.push(YO)
-const YBO = new THREE.Mesh(geometry, material)
+const YBO = new THREE.Mesh(YBOGeom, material)
+YBO.name = "YBO"
 allCubes.push(YBO)
 
-WGR.translateOnAxis(xAxis, -2)
-WGR.translateOnAxis(yAxis, 2)
-WGR.translateOnAxis(zAxis, 2)
+WGR.translateOnAxis(xAxis, -1)
+WGR.translateOnAxis(yAxis, 1)
+WGR.translateOnAxis(zAxis, 1)
 
-WR.translateOnAxis(yAxis, 2)
-WR.translateOnAxis(zAxis, 2)
+WR.translateOnAxis(yAxis, 1)
+WR.translateOnAxis(zAxis, 1)
 
-WRB.translateOnAxis(xAxis, 2)
-WRB.translateOnAxis(yAxis, 2)
-WRB.translateOnAxis(zAxis, 2)
+WRB.translateOnAxis(xAxis, 1)
+WRB.translateOnAxis(yAxis, 1)
+WRB.translateOnAxis(zAxis, 1)
 
-WG.translateOnAxis(yAxis, 2)
-WG.translateOnAxis(xAxis, -2)
+WG.translateOnAxis(yAxis, 1)
+WG.translateOnAxis(xAxis, -1)
 
-W.translateOnAxis(yAxis, 2)
+W.translateOnAxis(yAxis, 1)
 
-WB.translateOnAxis(yAxis, 2)
-WB.translateOnAxis(xAxis, 2)
+WB.translateOnAxis(yAxis, 1)
+WB.translateOnAxis(xAxis, 1)
 
-WOG.translateOnAxis(yAxis, 2)
-WOG.translateOnAxis(xAxis, -2)
-WOG.translateOnAxis(zAxis, -2)
+WOG.translateOnAxis(yAxis, 1)
+WOG.translateOnAxis(xAxis, -1)
+WOG.translateOnAxis(zAxis, -1)
 
-WO.translateOnAxis(yAxis, 2)
-WO.translateOnAxis(zAxis, -2)
+WO.translateOnAxis(yAxis, 1)
+WO.translateOnAxis(zAxis, -1)
 
-WBO.translateOnAxis(yAxis, 2)
-WBO.translateOnAxis(xAxis, 2)
-WBO.translateOnAxis(zAxis, -2)
+WBO.translateOnAxis(yAxis, 1)
+WBO.translateOnAxis(xAxis, 1)
+WBO.translateOnAxis(zAxis, -1)
 
-GR.translateOnAxis(xAxis, -2)
-GR.translateOnAxis(zAxis, 2)
+GR.translateOnAxis(xAxis, -1)
+GR.translateOnAxis(zAxis, 1)
 
-R.translateOnAxis(zAxis, 2)
+R.translateOnAxis(zAxis, 1)
 
-RB.translateOnAxis(xAxis, 2)
-RB.translateOnAxis(zAxis, 2)
+RB.translateOnAxis(xAxis, 1)
+RB.translateOnAxis(zAxis, 1)
 
-G.translateOnAxis(xAxis, -2)
+G.translateOnAxis(xAxis, -1)
 
-B.translateOnAxis(xAxis, 2)
+B.translateOnAxis(xAxis, 1)
 
-OG.translateOnAxis(xAxis, -2)
-OG.translateOnAxis(zAxis, -2)
+OG.translateOnAxis(xAxis, -1)
+OG.translateOnAxis(zAxis, -1)
 
-O.translateOnAxis(zAxis, -2)
+O.translateOnAxis(zAxis, -1)
 
-OB.translateOnAxis(xAxis, 2)
-OB.translateOnAxis(zAxis, -2)
+OB.translateOnAxis(xAxis, 1)
+OB.translateOnAxis(zAxis, -1)
 
-YGR.translateOnAxis(xAxis, -2)
-YGR.translateOnAxis(yAxis, -2)
-YGR.translateOnAxis(zAxis, 2)
+YGR.translateOnAxis(xAxis, -1)
+YGR.translateOnAxis(yAxis, -1)
+YGR.translateOnAxis(zAxis, 1)
 
-YR.translateOnAxis(yAxis, -2)
-YR.translateOnAxis(zAxis, 2)
+YR.translateOnAxis(yAxis, -1)
+YR.translateOnAxis(zAxis, 1)
 
-YRB.translateOnAxis(xAxis, 2)
-YRB.translateOnAxis(yAxis, -2)
-YRB.translateOnAxis(zAxis, 2)
+YRB.translateOnAxis(xAxis, 1)
+YRB.translateOnAxis(yAxis, -1)
+YRB.translateOnAxis(zAxis, 1)
 
-YG.translateOnAxis(xAxis, -2)
-YG.translateOnAxis(yAxis, -2)
+YG.translateOnAxis(xAxis, -1)
+YG.translateOnAxis(yAxis, -1)
 
-Y.translateOnAxis(yAxis, -2)
+Y.translateOnAxis(yAxis, -1)
 
-YB.translateOnAxis(xAxis, 2)
-YB.translateOnAxis(yAxis, -2)
+YB.translateOnAxis(xAxis, 1)
+YB.translateOnAxis(yAxis, -1)
 
-YOG.translateOnAxis(xAxis, -2)
-YOG.translateOnAxis(yAxis, -2)
-YOG.translateOnAxis(zAxis, -2)
+YOG.translateOnAxis(xAxis, -1)
+YOG.translateOnAxis(yAxis, -1)
+YOG.translateOnAxis(zAxis, -1)
 
-YO.translateOnAxis(yAxis, -2)
-YO.translateOnAxis(zAxis, -2)
+YO.translateOnAxis(yAxis, -1)
+YO.translateOnAxis(zAxis, -1)
 
-YBO.translateOnAxis(xAxis, 2)
-YBO.translateOnAxis(yAxis, -2)
-YBO.translateOnAxis(zAxis, -2)
+YBO.translateOnAxis(xAxis, 1)
+YBO.translateOnAxis(yAxis, -1)
+YBO.translateOnAxis(zAxis, -1)
 
 const toMove = new THREE.Group()
 toMove.add(
